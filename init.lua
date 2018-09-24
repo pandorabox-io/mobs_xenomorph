@@ -43,7 +43,9 @@ mobs:register_mob("scifi_mobs:xenomorph", {
 	},
 })
 
-mobs:register_spawn("scifi_mobs:xenomorph", {"default:steelblock","default:stone"}, 20, 10, 15000, 2, 31000)
+
+mobs:register_spawn("scifi_mobs:xenomorph", {"default:ice"}, 20, 10, 9000, 1, 31000)
+-- name, nodes, max_light, min_light, chance, active_object_count, max_height, day_toggle
 
 mobs:register_egg("scifi_mobs:xenomorph", "xenomorph", "scifi_spider_inv.png", 0)
 
