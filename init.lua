@@ -1,7 +1,7 @@
 
 
 
-mobs:register_mob("scifi_mobs:xenomorph", {
+mobs:register_mob("mobs_xenomorph:xenomorph", {
 	type = "monster",
 	passive = false,
 	reach = 4,
@@ -11,7 +11,7 @@ mobs:register_mob("scifi_mobs:xenomorph", {
 	hp_max = 22,
 	armor = 30,
    shoot_interval = 1.5,
-   arrow = "scifi_mobs:rlaser",
+   arrow = "mobs_xenomorph:rlaser",
    shoot_offset = 1,
 	collisionbox = {-1, -0, -1, 1, 2, 1},
 	visual = "mesh",
@@ -44,13 +44,13 @@ mobs:register_mob("scifi_mobs:xenomorph", {
 })
 
 
-mobs:register_spawn("scifi_mobs:xenomorph", {"default:ice"}, 20, 10, 9000, 1, 31000)
+mobs:register_spawn("mobs_xenomorph:xenomorph", {"default:ice"}, 20, 10, 9000, 1, 31000)
 -- name, nodes, max_light, min_light, chance, active_object_count, max_height, day_toggle
 
-mobs:register_egg("scifi_mobs:xenomorph", "xenomorph", "scifi_spider_inv.png", 0)
+mobs:register_egg("mobs_xenomorph:xenomorph", "xenomorph", "scifi_spider_inv.png", 0)
 
 
-mobs:register_arrow("scifi_mobs:rlaser", {
+mobs:register_arrow("mobs_xenomorph:rlaser", {
    visual = "sprite",
    visual_size = {x = 0.5, y = 0.5},
    textures = {"scifi_mobs_rlaser.png"},
