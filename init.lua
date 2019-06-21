@@ -23,6 +23,9 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 	makes_footstep_sound = false,
 	walk_velocity = 2,
 	run_velocity = 5,
+        -- fly = true, TODO: test
+        -- fly_in = "default:water_source",
+        -- fall_speed = 0,
 	jump = true,
 	water_damage = 0,
 	lava_damage = 2,
