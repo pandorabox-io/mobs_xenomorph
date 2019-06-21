@@ -47,6 +47,18 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 -- mobs:register_spawn("mobs_xenomorph:xenomorph", {"default:ice"}, 20, 10, 9000, 1, 31000)
 -- name, nodes, max_light, min_light, chance, active_object_count, max_height, day_toggle
 
+mobs:spawn({
+        name = "mobs_xenomorph:xenomorph",
+        nodes = {"default:stone_with_mese"},
+        min_light = 0,
+        max_light = 14,
+        chance = 7000,
+        active_object_count = 1,
+        min_height = 5000,
+        max_height = 10000,
+})
+
+
 mobs:register_egg("mobs_xenomorph:xenomorph", "xenomorph", "scifi_spider_inv.png", 0)
 
 
