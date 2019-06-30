@@ -19,13 +19,18 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 	textures = {
 		{"scifi_xenomorph.png"},
 	},
+	sounds = {
+		random = "mobs_dungeonmaster",
+		shoot_attack = "mobs_fireball",
+	},
 	visual_size = {x=3, y=3},
 	makes_footstep_sound = false,
 	walk_velocity = 2,
 	run_velocity = 5,
-        -- fly = true, TODO: test
-        -- fly_in = "default:water_source",
-        -- fall_speed = 0,
+	fly = true,
+	drops = {
+		{name = "default:mese", chance = 10, min = 1, max = 1}
+	},
 	jump = true,
 	water_damage = 0,
 	lava_damage = 2,
@@ -52,17 +57,23 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 
 mobs:spawn({
         name = "mobs_xenomorph:xenomorph",
-        nodes = {"default:stone_with_mese"},
-        min_light = 0,
-        max_light = 14,
-        chance = 7000,
+        nodes = {
+		"default:stone_with_mese",
+		"default:stone_with_iron",
+		"default:mese",
+		"default:stone_with_diamond",
+		"default:stone_with_copper"
+	},
+	neighbors = {"vacuum:vacuum", "air"},
+        chance = 2000,
+	interval = 20,
         active_object_count = 1,
         min_height = 5000,
         max_height = 10000,
 })
 
 
-mobs:register_egg("mobs_xenomorph:xenomorph", "xenomorph", "scifi_spider_inv.png", 0)
+mobs:register_egg("mobs_xenomorph:xenomorph", "xenomorph", "fire_basic_flame.png", 0)
 
 
 mobs:register_arrow("mobs_xenomorph:rlaser", {
