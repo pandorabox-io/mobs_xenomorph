@@ -1,6 +1,3 @@
-
-
-
 mobs:register_mob("mobs_xenomorph:xenomorph", {
 	type = "monster",
 	passive = false,
@@ -10,9 +7,9 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 	hp_min = 12,
 	hp_max = 22,
 	armor = 30,
-   shoot_interval = 1.5,
-   arrow = "mobs_xenomorph:rlaser",
-   shoot_offset = 1,
+	shoot_interval = 1.5,
+	arrow = "mobs_xenomorph:rlaser",
+	shoot_offset = 1,
 	collisionbox = {-1, -0, -1, 1, 2, 1},
 	visual = "mesh",
 	mesh = "xenomorph.b3d",
@@ -47,7 +44,6 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 		run_end = 27,
 		punch_start = 30,
 		punch_end = 59,
-
 	},
 })
 
@@ -56,8 +52,8 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 -- name, nodes, max_light, min_light, chance, active_object_count, max_height, day_toggle
 
 mobs:spawn({
-        name = "mobs_xenomorph:xenomorph",
-        nodes = {
+	name = "mobs_xenomorph:xenomorph",
+	nodes = {
 		"default:stone_with_mese",
 		"default:stone_with_iron",
 		"default:mese",
@@ -65,41 +61,38 @@ mobs:spawn({
 		"default:stone_with_copper"
 	},
 	neighbors = {"vacuum:vacuum", "air"},
-        chance = 2000,
+	chance = 2000,
 	interval = 20,
-        active_object_count = 1,
-        min_height = 5000,
-        max_height = 10000,
+	active_object_count = 1,
+	min_height = 5000,
+	max_height = 10000,
 })
-
 
 mobs:register_egg("mobs_xenomorph:xenomorph", "xenomorph", "fire_basic_flame.png", 0)
 
-
 mobs:register_arrow("mobs_xenomorph:rlaser", {
-   visual = "sprite",
-   visual_size = {x = 0.5, y = 0.5},
-   textures = {"scifi_mobs_rlaser.png"},
-   velocity = 18,
-   tail = 1, -- enable tail
-   tail_texture = "scifi_mobs_rlaser.png",
+	visual = "sprite",
+	visual_size = {x = 0.5, y = 0.5},
+	textures = {"scifi_mobs_rlaser.png"},
+	velocity = 18,
+	tail = 1, -- enable tail
+	tail_texture = "scifi_mobs_rlaser.png",
 
-   hit_player = function(self, player)
-      player:punch(self.object, 1.0, {
-         full_punch_interval = 1.0,
-         damage_groups = {fleshy = 8},
-      }, nil)
-   end,
-   
-   hit_mob = function(self, player)
-      player:punch(self.object, 1.0, {
-         full_punch_interval = 1.0,
-         damage_groups = {fleshy = 8},
-      }, nil)
-   end,
+	hit_player = function(self, player)
+		player:punch(self.object, 1.0, {
+			full_punch_interval = 1.0,
+			damage_groups = {fleshy = 8},
+		}, nil)
+	end,
 
-   hit_node = function(self, pos, node)
-      mobs:explosion(pos, 1, 1, 1)
-   end,
+	hit_mob = function(self, player)
+		player:punch(self.object, 1.0, {
+			full_punch_interval = 1.0,
+			damage_groups = {fleshy = 8},
+		}, nil)
+	end,
+
+	hit_node = function(self, pos, node)
+		mobs:explosion(pos, 1, 1, 1)
+	end,
 })
-
