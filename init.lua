@@ -7,6 +7,7 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 	hp_min = 12,
 	hp_max = 22,
 	armor = 30,
+	follow = {"default:mese"},
 	shoot_interval = 1.5,
 	arrow = "mobs_xenomorph:rlaser",
 	shoot_offset = 1,
@@ -45,6 +46,69 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 		punch_start = 30,
 		punch_end = 59,
 	},
+	do_custom = function(self, dtime)
+		if not self.v2 then
+			self.v2 = 0
+			self.max_speed_forward = 6
+			self.max_speed_reverse = 2
+			self.accel = 6
+			self.terrain_type = 3
+			self.driver_attach_at = {x = 0, y = 5, z = -1}
+			self.driver_eye_offset = {x = 0, y = 18, z = 0}
+		end
+		if self.driver then
+			mobs.drive(self, "walk", "stand", true, dtime)
+			return false
+		end
+		return true
+	end,
+	on_die = function(self, pos)
+		if self.driver then
+			minetest.add_item(pos, "mobs:saddle")
+			mobs.detach(self.driver, {x = 1, y = 0, z = 1})
+			self.saddle = nil
+		end
+	end,
+	on_rightclick = function(self, clicker)
+		if not clicker or not clicker:is_player() then
+			return
+		end
+		if mobs:feed_tame(self, clicker, 30, false, true) then
+			if self.tamed then
+				self.attack_monsters = true
+				self.attack_npcs = false
+				self.attack_players = false
+				self.fall_damage = 0
+				self.fly = false
+				self.type = "animal"
+			end
+			return
+		end
+		if mobs:protect(self, clicker) then
+			return
+		end
+		if self.tamed and clicker:get_player_name() == self.owner then
+			local inv = clicker:get_inventory()
+			if self.driver and self.driver == clicker then
+				mobs.detach(clicker, {x = 1, y = 0, z = 1})
+				if inv:room_for_item("main", "mobs:saddle") then
+					inv:add_item("main", "mobs:saddle")
+				else
+					minetest.add_item(clicker:get_pos(), "mobs:saddle")
+				end
+				self.saddle = nil
+			elseif self.saddle or (not self.driver
+			and clicker:get_wielded_item():get_name() == "mobs:saddle") then
+				self.object:set_properties({stepheight = 1.1})
+				mobs.attach(self, clicker)
+				if not self.saddle then
+					inv:remove_item("main", "mobs:saddle")
+					self.saddle = true
+				end
+			end
+		end
+		mobs:capture_mob(self, clicker, 0, 0, 70, false)
+	end
 })
 
 
