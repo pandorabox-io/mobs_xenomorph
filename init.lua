@@ -108,6 +108,11 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 			end
 		end
 		mobs:capture_mob(self, clicker, 0, 0, 70, false)
+	end,
+	do_punch = function(self, hitter)
+		if self.driver and hitter == self.driver then
+			return false
+		end
 	end
 })
 
