@@ -29,6 +29,7 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 	walk_velocity = 2,
 	run_velocity = 5,
 	fly = true,
+	fly_in = {"air", "vacuum:vacuum"},
 	drops = {
 		{name = "default:mese", chance = 10, min = 1, max = 1}
 	},
