@@ -82,6 +82,7 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 				self.attack_npcs = false
 				self.attack_players = false
 				self.fall_damage = 0
+				self.fear_height = 5
 				self.fly = false
 				self.type = "animal"
 			end
