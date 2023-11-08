@@ -1,5 +1,5 @@
 mobs:register_mob("mobs_xenomorph:xenomorph", {
-	type = "monster",
+	type = "animal",
 	passive = false,
 	reach = 4,
 	damage = 4,
@@ -50,6 +50,11 @@ mobs:register_mob("mobs_xenomorph:xenomorph", {
 		punch_start = 30,
 		punch_end = 59,
 	},
+	after_activate = function(self)
+		if not self.tamed then
+			self.type = "monster"
+		end
+	end,
 	do_custom = function(self, dtime)
 		if not self.v2 then
 			self.v2 = 0
