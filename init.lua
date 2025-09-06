@@ -172,6 +172,6 @@ mobs:register_arrow("mobs_xenomorph:rlaser", {
 	end,
 
 	hit_node = function(self, pos, node)
-		mobs:explosion(pos, 1, 1, 1)
+		mobs:boom(self, pos, 1)
 	end,
 })
